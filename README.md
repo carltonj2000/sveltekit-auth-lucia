@@ -18,3 +18,8 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 npx shadcn-svelte@latest init
 ```
+
+```bash
+npm install mode-watcher
+npx shadcn-svelte@latest add button
+```
