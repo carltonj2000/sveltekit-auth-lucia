@@ -22,4 +22,9 @@ npx shadcn-svelte@latest init
 ```bash
 npm install mode-watcher
 npx shadcn-svelte@latest add button
+npx shadcn-svelte@latest add card
+npx shadcn-svelte@latest add input
+npx shadcn-svelte@latest add label
+npx shadcn-svelte@latest add textarea
+npm i -D sveltekit-superforms zod
 ```
