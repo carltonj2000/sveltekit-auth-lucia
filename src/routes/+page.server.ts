@@ -1,20 +1,19 @@
+import { fail } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms/server';
-import { z } from 'zod';
+import { newArticleSchema } from './article';
 
-const newArticleSchema = z.object({
-	title: z.string().min(1).default('hi'),
-	content: z.string().min(1).default('some content')
-});
-
-export const load = async () => {
-	const form = await superValidate(newArticleSchema);
-	console.log({ form, server: true });
+export const load = async (e) => {
+	const form = await superValidate(e, newArticleSchema);
 	return { form };
 };
 
 export const actions = {
 	default: async (e) => {
-		const formData = Object.fromEntries(await e.request.formData());
-		console.log('adding to do', formData);
+		const form = await superValidate(e, newArticleSchema);
+		console.log('adding to do (server in)', form);
+		if (!form.valid) {
+			return fail(400, { form });
+		}
+		return { form };
 	}
 };

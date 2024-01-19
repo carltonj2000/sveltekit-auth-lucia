@@ -7,6 +7,10 @@ The code in this repo is base on the following videos:
 - https://youtu.be/E9J2VXd-bzE?si=1hBwymPY1xxHzK1_
 - https://youtu.be/UMpKaZy0Rpc?si=zCwl9I1fHAWHpdB8
 
+Background:
+
+- Supreforms - https://youtu.be/MiKzH3kcVfs?si=o5CmBLJ4Dx9tBzcR
+
 ## Creation History
 
 ```bash
