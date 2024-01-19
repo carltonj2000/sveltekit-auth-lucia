@@ -1,18 +1,17 @@
 import { fail } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms/server';
-import { getArticles } from '../db';
-import { newArticleSchema } from './article';
+import { newArticleSchema } from '../../article';
 
 export const load = async (e) => {
-	const articles = await getArticles();
 	const form = await superValidate(e, newArticleSchema);
-	return { form, articles };
+	console.log('ran', form);
+	return { form };
 };
 
 export const actions = {
 	default: async (e) => {
 		const form = await superValidate(e, newArticleSchema);
-		console.log('adding to do (server in)', form);
+		console.log('updating (server in)', form);
 		if (!form.valid) {
 			return fail(400, { form });
 		}

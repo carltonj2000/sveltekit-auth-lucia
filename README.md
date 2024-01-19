@@ -2,8 +2,9 @@
 
 ## Code History
 
-The code in this repo is base on the following videos:
+The code in this repo is base on the following:
 
+- https://medium.com/@anasmohammed361/drizzle-orm-with-sveltekit-8aecbc8cc39d
 - https://youtu.be/E9J2VXd-bzE?si=1hBwymPY1xxHzK1_
 - https://youtu.be/UMpKaZy0Rpc?si=zCwl9I1fHAWHpdB8
 
@@ -31,4 +32,15 @@ npx shadcn-svelte@latest add input
 npx shadcn-svelte@latest add label
 npx shadcn-svelte@latest add textarea
 npm i -D sveltekit-superforms zod
+```
+
+```bash
+npm i drizzle-orm
+npm i -D drizzle-kit
+npm i -D dotenv
+npm i -D pg
+npm run db:push
+npm run db:studio
+## above setups and db with table and displays it, below query
+npm i @vercel/postgres
 ```

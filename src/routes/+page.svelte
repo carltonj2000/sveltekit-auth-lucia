@@ -5,12 +5,14 @@
 
 	import type { PageData } from './$types';
 	export let data: PageData;
+	const { articles } = data;
+	console.log(articles);
 </script>
 
 <div class="max-w-[960px] mx-auto mt-3">
 	<Hero />
 	<div class="flex gap-1 mt-5">
-		<Articles showDefaultOnly={true} />
+		<Articles {articles} />
 		<ArticleNew {data} />
 	</div>
 </div>

@@ -12,7 +12,7 @@
 		<Article />
 	{:else}
 		{#each articles as article}
-			<Article />
+			<Article {...article} />
 		{/each}
 	{/if}
 </div>
