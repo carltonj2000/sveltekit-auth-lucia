@@ -1,4 +1,4 @@
-# SvelteKit, Prisma and Lucia
+# SvelteKit, Drizzle and Lucia
 
 ## Code History
 

@@ -1,21 +1,25 @@
 import { fail } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms/server';
-import { getArticles } from '../db';
+import { addArticle, deleteArticle, getArticles } from '../db';
+import type { Actions, PageServerLoad } from './$types';
 import { newArticleSchema } from './article';
 
-export const load = async (e) => {
+export const load: PageServerLoad = async () => {
 	const articles = await getArticles();
-	const form = await superValidate(e, newArticleSchema);
+	const form = await superValidate(newArticleSchema);
 	return { form, articles };
 };
 
-export const actions = {
-	default: async (e) => {
+export const actions: Actions = {
+	addArticle: async (e) => {
 		const form = await superValidate(e, newArticleSchema);
-		console.log('adding to do (server in)', form);
-		if (!form.valid) {
-			return fail(400, { form });
-		}
-		return { form };
+		if (!form.valid) return fail(400, { form });
+		await addArticle({ ...form.data });
+		return;
+	},
+	deleteArticle: async ({ url }) => {
+		const id = url.searchParams.get('id');
+		if (id) await deleteArticle(id);
+		else return fail(400, { message: 'article to delete not found' });
 	}
 };

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
 	export let id = 1;
@@ -11,7 +12,9 @@
 	<Card.Header><Card.Title>{title}</Card.Title></Card.Header>
 	<Card.Content><p>{content}</p></Card.Content>
 	<Card.Footer class="flex justify-between">
-		<Button variant="destructive">Delete</Button>
+		<form action="?/deleteArticle&id={id}" method="POST" use:enhance>
+			<Button variant="destructive" type="submit">Delete</Button>
+		</form>
 		<a href={`/edit/${id}`}>
 			<Button variant="secondary">Edit</Button>
 		</a>

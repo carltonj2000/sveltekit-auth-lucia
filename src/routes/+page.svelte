@@ -5,8 +5,7 @@
 
 	import type { PageData } from './$types';
 	export let data: PageData;
-	const { articles } = data;
-	console.log(articles);
+	$: ({ articles } = data);
 </script>
 
 <div class="max-w-[960px] mx-auto mt-3">

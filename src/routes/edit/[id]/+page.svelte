@@ -5,7 +5,6 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { superForm } from 'sveltekit-superforms/client';
-	import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
 	import { newArticleSchema } from '../../article';
 
 	export let data;
@@ -16,12 +15,11 @@
 </script>
 
 <div class="flex-1">
-	<SuperDebug data={$form} />
 	<h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
 		Edit Article
 	</h3>
 	<Card.Root>
-		<form method="POST" use:enhance>
+		<form method="POST" use:enhance action="?/updateArticle">
 			<Card.Header>
 				<Card.Title>
 					<Label for="title">Title:</Label>
@@ -44,7 +42,7 @@
 			</Card.Content>
 			<Card.Footer>
 				<Button variant="secondary" class="w-full" type="submit">
-					Submit Edited Article
+					Update Article
 				</Button>
 			</Card.Footer>
 		</form>
