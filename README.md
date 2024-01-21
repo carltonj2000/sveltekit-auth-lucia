@@ -47,4 +47,6 @@ npm i @vercel/postgres
 
 ```bash
 npm i drizzle-zod
+npm i formsnap
+npx shadcn-svelte@latest add form
 ```
