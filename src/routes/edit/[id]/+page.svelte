@@ -1,50 +1,43 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
 	import * as Card from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { Textarea } from '$lib/components/ui/textarea';
-	import { superForm } from 'sveltekit-superforms/client';
-	import { articleInsertZ } from '../../../db/schema/articles';
+	import * as Form from '$lib/components/ui/form';
+	import { articlesTbl } from '../../../db/schema/articles';
 
 	export let data;
-	const { form, errors, enhance, constraints } = superForm(data.form, {
-		taintedMessage: 'Are you sure you want to leave?',
-		validators: articleInsertZ
-	});
+	$: ({ form } = data);
 </script>
 
-<div class="flex-1">
+<div class="flex-1 max-w-[960px] mx-auto mt-3">
 	<h3 class="scroll-m-20 text-2xl font-semibold tracking-tight">
 		Edit Article
 	</h3>
 	<Card.Root>
-		<form method="POST" use:enhance action="?/updateArticle">
-			<Card.Header>
-				<Card.Title>
-					<Label for="title">Title:</Label>
-					<Input type="text" id="title" name="title" bind:value={$form.title} />
-					{#if $errors.title}
-						<small class="text-sm font-medium leading-none">
-							{$errors.title}
-						</small>
-					{/if}
-				</Card.Title>
-			</Card.Header>
-			<Card.Content>
-				<Label for="content">Content:</Label>
-				<Textarea id="content" name="content" bind:value={$form.content} />
-				{#if $errors.content}
-					<small class="text-sm font-medium leading-none">
-						{$errors.content}
-					</small>
-				{/if}
-			</Card.Content>
-			<Card.Footer>
-				<Button variant="secondary" class="w-full" type="submit">
-					Update Article
-				</Button>
-			</Card.Footer>
-		</form>
+		<Card.Content class="mt-3">
+			<Form.Root
+				method="POST"
+				{form}
+				schema={articlesTbl}
+				let:config
+				action="?/updateArticle"
+			>
+				<Form.Field {config} name="title">
+					<Form.Item>
+						<Form.Label>Title</Form.Label>
+						<Form.Input />
+						<Form.Description>Title of the article.</Form.Description>
+						<Form.Validation />
+					</Form.Item>
+				</Form.Field>
+				<Form.Field {config} name="content">
+					<Form.Item>
+						<Form.Label>Content</Form.Label>
+						<Form.Input />
+						<Form.Description>Content of the article.</Form.Description>
+						<Form.Validation />
+					</Form.Item>
+				</Form.Field>
+				<Form.Button>Submit</Form.Button>
+			</Form.Root>
+		</Card.Content>
 	</Card.Root>
 </div>
