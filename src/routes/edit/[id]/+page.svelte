@@ -5,12 +5,12 @@
 	import { Label } from '$lib/components/ui/label';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { superForm } from 'sveltekit-superforms/client';
-	import { newArticleSchema } from '../../article';
+	import { articleInsertZ } from '../../../db/schema/articles';
 
 	export let data;
 	const { form, errors, enhance, constraints } = superForm(data.form, {
 		taintedMessage: 'Are you sure you want to leave?',
-		validators: newArticleSchema
+		validators: articleInsertZ
 	});
 </script>
 

@@ -44,3 +44,7 @@ npm run db:studio
 ## above setups and db with table and displays it, below query
 npm i @vercel/postgres
 ```
+
+```bash
+npm i drizzle-zod
+```

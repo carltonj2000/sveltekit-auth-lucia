@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { ArticleT } from './article';
+	import type { ArticleSelectT } from '../db/schema/articles';
 	import Article from './article.svelte';
 
-	export let articles: Array<ArticleT & { id: number }> = [];
+	export let articles: Array<ArticleSelectT> = [];
 	export let showDefaultOnly = false;
 </script>
 
