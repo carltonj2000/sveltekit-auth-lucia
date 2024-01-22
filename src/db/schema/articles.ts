@@ -5,8 +5,8 @@ import { z } from 'zod';
 
 export const articlesTbl = pgTable('articles', {
 	id: serial('id').primaryKey(),
-	title: text('title').notNull(),
-	content: text('content').notNull()
+	title: text('title').notNull().default(''),
+	content: text('content').notNull().default('')
 });
 
 export type ArticleSelectT = InferSelectModel<typeof articlesTbl>;

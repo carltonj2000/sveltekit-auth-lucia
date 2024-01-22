@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms/server';
-import { getArticle, updateArticle } from '../../../db';
+import { getArticle, updateArticle } from '../../../db/articles';
 import { articleInsertZ } from '../../../db/schema/articles';
 
 export const load = async (e) => {

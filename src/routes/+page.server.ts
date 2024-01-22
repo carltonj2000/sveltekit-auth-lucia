@@ -1,6 +1,6 @@
 import { fail } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms/server';
-import { addArticle, deleteArticle, getArticles } from '../db';
+import { addArticle, deleteArticle, getArticles } from '../db/articles';
 import { articleInsertZ } from '../db/schema/articles';
 import type { Actions, PageServerLoad } from './$types';
 

@@ -34,6 +34,8 @@ npx shadcn-svelte@latest add textarea
 npm i -D sveltekit-superforms zod
 ```
 
+Connect to DB.
+
 ```bash
 npm i drizzle-orm
 npm i -D drizzle-kit
@@ -45,8 +47,16 @@ npm run db:studio
 npm i @vercel/postgres
 ```
 
+Use forms from ShadCn UI.
+
 ```bash
 npm i drizzle-zod
 npm i formsnap
 npx shadcn-svelte@latest add form
+```
+
+Add Auth via Lucia.
+
+```bash
+npm i lucia @lucia-auth/adapter-postgresql
 ```
